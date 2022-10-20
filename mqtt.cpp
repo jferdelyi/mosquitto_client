@@ -3,6 +3,10 @@
 #include <csignal>  // raise
 #include <iostream> // std::cout etc
 
+#ifdef __linux__
+	#include <string.h> // memset and memcpy
+#endif
+
 mqtt_client::mqtt_client(const char* p_id, const char* p_host, const int p_port, const int p_keep_alive) : mosquittopp(p_id) {
 	connect(p_host, p_port, p_keep_alive);
 	m_buf_size = 10;

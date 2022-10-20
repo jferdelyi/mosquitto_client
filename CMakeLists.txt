@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.22)
 project(mosquitto_client)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -13,4 +13,4 @@ include_directories(${MOSQUITTOPP_INCLUDE_DIR})
 link_directories(${MOSQUITTOPP_LIBRARY}/..)
 
 add_executable(mosquitto_client ${SOURCES})
-target_link_libraries(mosquitto_client MOSQUITTOPP)
+target_link_libraries(mosquitto_client mosquittopp)
