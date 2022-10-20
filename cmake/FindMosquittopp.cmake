@@ -5,14 +5,18 @@
 #  MOSQUITTOPP_LIBRARIES   - List of libraries when using libmosquittopp.
 #  MOSQUITTOPP_FOUND       - True if libmosquittopp found.
 
+if (WIN32)
+    set(MOSQUITTOPP_INCLUDE_DIR "$ENV{Path}" )
+    set(MOSQUITTOPP_LIBRARY "$ENV{Path}" )
+    link_directories("$ENV{Path}")
+endif (WIN32)
+
 if (NOT MOSQUITTOPP_INCLUDE_DIR)
     find_path(MOSQUITTOPP_INCLUDE_DIR mosquitto.h)
 endif()
 
 if (NOT MOSQUITTOPP_LIBRARY)
-    find_library(
-            MOSQUITTOPP_LIBRARY
-            NAMES mosquittopp)
+    find_library(MOSQUITTOPP_LIBRARY NAMES mosquittopp)
 endif()
 
 include(FindPackageHandleStandardArgs)
