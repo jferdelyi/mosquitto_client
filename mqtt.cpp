@@ -26,7 +26,7 @@ void mqtt_client::send_message(const std::string& p_topic, const std::string& p_
 		// About message ID
 		// If not NULL, the function will set this to the message id of this particular message.  
 		// This can be then used with the publish callback to determine when the message has been sent.  
-		// Note that although the MQTT protocol doesn’t use message ids for messages with QoS=0, libmosquitto assigns them message ids so they can be tracked with this parameter.
+		// Note that although the MQTT protocol doesnï¿½t use message ids for messages with QoS=0, libmosquitto assigns them message ids so they can be tracked with this parameter.
 		// 
 		// About retain message
 		// A retained message is a normal MQTT message with the retained flag set to true.
@@ -81,7 +81,7 @@ void mqtt_client::on_message(const struct mosquitto_message* p_message) /*overri
 	}
 
 	// If the topic is exit
-	if (p_message->topic == "EXIT") {
+	if (strcmp(p_message->topic, "EXIT") == 0) {
 		raise(SIGINT);
 	}
 }
